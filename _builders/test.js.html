@@ -1,0 +1,13 @@
+<script>
+    app = new Vue(
+        {
+            el:'#app',
+            data: {
+                test: "yes"
+            }
+        }
+    )
+    getLink("/power/test", (data) => {
+        app.test = JSON.parse(data);
+    });
+</script>

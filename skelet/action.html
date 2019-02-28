@@ -1,0 +1,31 @@
+</div>
+<script src="https://unpkg.com/vue"></script>
+<script src="https://unpkg.com/buefy/dist/buefy.min.js"></script>
+<script>Vue.config.silent = true;</script>
+<script>
+function getLink(link, callback, errorcallback) {
+    let linker = new XMLHttpRequest();
+    linker.open("GET", link, true);
+    linker.timeout = 6000;
+    linker.onload = ()=>{
+        if (callback) {
+            callback(linker.responseText);
+        }
+    };
+    linker.onerror = errorcallback || (()=>{});
+    linker.send();
+}
+function postLink(link, json, callback, errorcallback) {
+    let linker = new XMLHttpRequest();
+    linker.open("POST", link, true);
+    linker.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+    linker.timeout = 6000;
+    linker.onload = ()=>{
+        if (callback) {
+            callback(linker.responseText);
+        }
+    };
+    linker.onerror = errorcallback || (()=>{});
+    linker.send(json);
+}
+</script>
